@@ -538,7 +538,7 @@ app.directive('myDirective', function() {
       notbalanced=1;
 	 }
 	}        
-    if(value.search(/[\(]+[\.\+\*\^\/]|[\.\+\-\*\^\/]+[\.\+\-\*\^\/]|[\.\+\-\*\^\/]+[\)]|[\)]+[0-9 \.]|[0-9 \.]+[\(]|^[\.\+\*\^\/]/igm)==-1 && (value.match(/\(/g)||[]).length==(value.match(/\)/g)||[]).length && notbalanced==0) {
+    if(value.search(/\.[0-9]*\.|[\(]+[\.\+\*\^\/]|[\.\+\-\*\^\/]+[\.\+\-\*\^\/]|[\.\+\-\*\^\/]+[\)]|[\)]+[0-9 \.]|[0-9 \.]+[\(]|^[\.\+\*\^\/]/igm)==-1 && (value.match(/\(/g)||[]).length==(value.match(/\)/g)||[]).length && notbalanced==0) {
       mCtrl.$setValidity('charE', true);
     } else {
       mCtrl.$setValidity('charE', false);
