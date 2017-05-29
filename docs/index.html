@@ -398,7 +398,7 @@ app.controller('myCtrl', function($scope,$interval,$timeout,focus,$rootScope,$co
     pos=pos+1;
   }
   else if (text=="S") {
-   if ($scope.myresult!="Out of Limit") {
+   if (!isNaN($scope.myresult)) {
 	 input.value=$scope.myresult;
 	 pos=input.value.length;
    };
@@ -448,11 +448,14 @@ app.controller('myCtrl', function($scope,$interval,$timeout,focus,$rootScope,$co
     } else {
 	 if($scope.myForm.part2.$valid && (!isNaN($scope.part2[$scope.part2.length-1])||$scope.part2[$scope.part2.length-1]==")") && $scope.part2.indexOf("()")==-1) {
 	  $scope.myresult=math.eval($scope.part2);
-	   if ($scope.myresult!="Infinity") {
-        $scope.myresult=math.round($scope.myresult,5);
+	   if (!isNaN($scope.myresult) && $scope.myresult!="Infinity" ) {
+	   $scope.myresult=math.round($scope.myresult,5);
+	   }
+	   else if ($scope.myresult=="Infinity") {
+         $scope.myresult="Out of Limit";
        } 
        else {
-   $scope.myresult="Out of Limit";
+   $scope.myresult="NaN";
        }
      };
     }
